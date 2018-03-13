@@ -5,26 +5,34 @@
       </div>
         <div class="sidebar__content" v-else>No notes here now. Don't be shy, please write something..
         </div>
+        <div class="sidebar__content">
+        <a href="#" @click.prevent="clearCurrentNote">Start a new note</a>
+        </div>
     </div>
 </template>
 
-
 <script>
-  import Note from './Note'
-  import {
-    mapGetters
-  } from 'vuex'
+import Note from './Note'
+import {
+  mapGetters,
+  mapActions
+} from 'vuex'
 
-  export default {
-    components: {
-      Note
-    },
-    computed: {
-      ...mapGetters([
-        'notes'
-      ])
-    }
+export default {
+  components: {
+    Note
+  },
+  methods: {
+    ...mapActions([
+      'clearCurrentNote'
+    ])
+  },
+  computed: {
+    ...mapGetters([
+      'notes'
+    ])
   }
+}
 
 </script>
 

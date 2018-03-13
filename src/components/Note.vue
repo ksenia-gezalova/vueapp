@@ -1,10 +1,10 @@
 <template>
     <div class="note">
-       <a href="#" class="note__delete">
+       <a href="#" class="note__delete" @click.prevent="deleteNote(note.id)">
            <span class="note__delete-icon">&times;</span>
        </a>
         <div class="note__content">
-            <a href="#" class="note__title"><span v-if="note.title">{{ note.title }}</span>
+            <a href="#" class="note__title" @click.prevent="openNote(note)"><span v-if="note.title">{{ note.title }}</span>
             <span v-else>Untitled note</span>
             </a>
             <p class="note__body"><span v-if="note.body">{{ note.body }}</span>
@@ -14,17 +14,25 @@
     </div>
 </template>
 
-
 <script>
-  export default {
-    props: [
-      'note'
-    ]
+import {
+  mapActions
+} from 'vuex'
 
+export default {
+  props: [
+    'note'
+  ],
+  methods: {
+    ...mapActions([
+      'openNote',
+      'deleteNote'
+    ])
   }
 
-</script>
+}
 
+</script>
 
 <style lang="scss" scoped>
   .note {

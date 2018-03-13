@@ -13,37 +13,35 @@
     </div>
 </template>
 
-
 <script>
-  import {
-    mapGetters,
-    mapActions
-  } from 'vuex'
+import {
+  mapGetters,
+  mapActions
+} from 'vuex'
 
-  export default {
-    computed: {
-      ...mapGetters([
-        'note',
-        'lastSaved',
-        'wordCount'
-      ])
-    },
-    methods: {
-      ...mapActions([
-        'saveNote',
-        'startSaveTimeout'
-      ]),
-      save() {
-        if (!this.note.id) {
-          this.saveNote()
-          return
-        }
-
-        this.startSaveTimeout()
+export default {
+  computed: {
+    ...mapGetters([
+      'note',
+      'lastSaved',
+      'wordCount'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'saveNote',
+      'startSaveTimeout'
+    ]),
+    save () {
+      if (!this.note.id) {
+        this.saveNote()
+        return
       }
+
+      this.startSaveTimeout()
     }
   }
-
+}
 </script>
 
 <style lang="scss" scoped>
@@ -53,7 +51,7 @@
     flex-direction: column;
 
     &__title {
-      width: 100%;
+      max-width: 100%;
       border: none;
       font: inherit;
       font-size: 1.6em;
@@ -64,7 +62,7 @@
     }
 
     &__text {
-      width: 100%;
+      max-width: 100%;
       margin: 0;
       flex: 1;
       padding: 20px 30px;

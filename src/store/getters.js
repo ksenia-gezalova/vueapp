@@ -5,8 +5,8 @@ export const note = state => {
 }
 
 export const notes = state => {
-  return state.notes.sort((a,b) => {
-    return a['lastSaved'] < b['lastSaved']
+  return state.notes.sort((a, b) => {
+    return a[ 'lastSaved' ] < b[ 'lastSaved' ]
   })
 }
 
@@ -18,5 +18,9 @@ export const lastSaved = state => {
 }
 
 export const wordCount = state => {
+  if (!state.note.body || state.note.body.trim() === '') {
+    return 0
+  }
 
+  return state.note.body.trim().split(' ').length
 }
